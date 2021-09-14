@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Snap to element or grid</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .draggable { width: 192px; height: 108px; padding: 0px; float: left; margin: 0 0px 0px 0; font-size: .9em; }
+  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+  #snaptarget { height: 50vh; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable" ).draggable({ snap: true });
+    $( "#draggable2" ).draggable({ snap: true });
+    $( "#draggable3" ).draggable({ snap: true });
+    $( "#draggable4" ).draggable({ snap: true });
+    $( "#draggable5" ).draggable({ snap: true });
+    $( "#draggable6" ).draggable({ snap: true });
+    $( "#draggable7" ).draggable({ snap: true });
+    $( "#draggable8" ).draggable({ snap: true });
+    $( "#draggable9" ).draggable({ snap: true });
+    // $( "#draggable4" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
+    // $( "#draggable3" ).draggable({ snap: ".ui-widget-header", snapMode: "outer" });
+    // $( "#draggable4" ).draggable({ grid: [ 20, 20 ] });
+    // $( "#draggable5" ).draggable({ grid: [ 80, 80 ] });
+  } );
+
+
+  //webcam
+
+  window.onload = function() {
+
+//add constraints object
+var constraints = { audio: false,
+                    video: true};
+
+//call getUserMedia, then the magic
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+    var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream2){
+    var video = document.querySelector('#cam2');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream2;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream3){
+    var video = document.querySelector('#cam3');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream3;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream4){
+    var video = document.querySelector('#cam4');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream4;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream5){
+    var video = document.querySelector('#cam5');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream5;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream6){
+    var video = document.querySelector('#cam6');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream6;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream7){
+    var video = document.querySelector('#cam7');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream7;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream8){
+    var video = document.querySelector('#cam8');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream8;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
+    var video = document.querySelector('#cam9');
+    // var video = document.querySelector('#cam1');
+    // var video = document.querySelector('#cam1');
+    video.srcObject = mediaStream9;
+    video.play();
+}).catch(function(err){
+    console.log("yikes, and err!" + err.message);
+});
+
+}
+  </script>
+</head>
+<body>
+ 
+<!-- <div id="snaptarget" class="ui-widget-header">
+  <p>I&apos;m a snap target</p>
+</div> -->
+ 
+<!-- <br style="clear:both"> -->
+ 
+<div id="draggable" class="draggable ui-widget-content" style="background-color: aqua;">
+  <video id="cam1" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable2" class="draggable ui-widget-content" style="background-color: blueviolet;">
+  <video id="cam2" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable3" class="draggable ui-widget-content" style="background-color: coral;">
+  <video id="cam3" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable4" class="draggable ui-widget-content" style="background-color: cornflowerblue;">
+  <video id="cam4" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable5" class="draggable ui-widget-content" style="background-color: cornsilk;">
+  <video id="cam5" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable6" class="draggable ui-widget-content" style="background-color: crimson;">
+  <video id="cam6" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable7" class="draggable ui-widget-content" style="background-color: darkgreen;">
+  <video id="cam7" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable8" class="draggable ui-widget-content" style="background-color: darksalmon;">
+  <video id="cam8" style="width: 192px; height: 108px;"></video>
+</div>
+
+<div id="draggable9" class="draggable ui-widget-content" style="background-color: deepskyblue;">
+  <video id="cam9" style="width: 192px; height: 108px;"></video>
+</div>
+ 
+<!-- <div id="draggable4" class="draggable ui-widget-content">
+  <p>I only snap to the big box</p>
+</div> -->
+ 
+<!-- <div id="draggable3" class="draggable ui-widget-content">
+  <p>I only snap to the outer edges of the big box</p>
+</div>
+ 
+<div id="draggable4" class="draggable ui-widget-content">
+  <p>I snap to a 20 x 20 grid</p>
+</div>
+ 
+<div id="draggable5" class="draggable ui-widget-content">
+  <p>I snap to a 80 x 80 grid</p>
+</div> -->
+ 
+ 
+</body>
+</html>
