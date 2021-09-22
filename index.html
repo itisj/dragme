@@ -3,16 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Drag Me</title>
+  <title>meeting</title>
   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <style>
-  .draggable { width: 192px; height: 108px; padding: 0px; float: left; margin: 0 0px 0px 0; font-size: .9em; }
+  body { background-color: black;}
+  .draggable { padding: 0px; margin: 0; mix-blend-mode: difference; }
   .ui-widget-header p, .ui-widget-content p { margin: 0; }
   #snaptarget { height: 50vh; }
+
+video {
+  mix-blend-mode: difference;
+  cursor: grab;
+}
+
+  /* grid */
+  .container {
+  width: 99vw;
+  height: 96vh;
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 0.3fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "one one two"
+    "one one three"
+    "four five six"
+    "footer footer footer"; 
+}
+.one { grid-area: one; mix-blend-mode: difference; }
+.two { grid-area: two; mix-blend-mode: difference;}
+.three { grid-area: three; mix-blend-mode: difference;}
+.four { grid-area: four; mix-blend-mode: difference;}
+.five { grid-area: five; mix-blend-mode: difference;}
+.six { grid-area: six; mix-blend-mode: difference;}
+.footer { grid-area: footer; }
+
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://unpkg.com/hydra-synth"></script>
   <script>
   $( function() {
     $( "#draggable" ).draggable({ snap: true });
@@ -24,6 +55,7 @@
     $( "#draggable7" ).draggable({ snap: true });
     $( "#draggable8" ).draggable({ snap: true });
     $( "#draggable9" ).draggable({ snap: true });
+    $( "#draggablefooter" ).draggable({ snap: true });
     // $( "#draggable4" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
     // $( "#draggable3" ).draggable({ snap: ".ui-widget-header", snapMode: "outer" });
     // $( "#draggable4" ).draggable({ grid: [ 20, 20 ] });
@@ -134,38 +166,67 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
   </script>
 </head>
 <body>
+
+  <!-- <div class="codeblock">
+    <code style="display: none; top: -1000px;">noise(2, 0.6).blend(osc(6,-0.2,() => mouse.x*0.001)).rotate(0, 0.5)
+      .modulate(osc(5).rotate(0, -0.2), 0.5)
+      .out(o0)
+      
+      src(o0).blend(o0).scale(() => 0.3 + mouse.x*0.0005,1,1)
+      .modulate(o0, 0.5)
+      .out(o1)
+      
+      src(o1).blend(o1).rotate(0, 0.5)
+      .modulate(o1, 0.5)
+      .out(o2)
+      
+      src(o2).blend(o2).rotate(0, 0.5)
+      .modulate(o2, 0.5)
+      .out(o3)
+      
+      render(o3)</code>
+    <div class="placeholder" style="width: 100vw; height: 100vh; left: 0%; position: absolute; transform: translate(0, 0); z-index: -10;">
+      <canvas id="hydraCanvas" width="100vw" height="100vh"></canvas>
+    </div>
+  </div> -->
  
 <!-- <div id="snaptarget" class="ui-widget-header">
   <p>I&apos;m a snap target</p>
 </div> -->
  
 <!-- <br style="clear:both"> -->
- 
-<div id="draggable" class="draggable ui-widget-content" style="background-color: aqua;">
-  <video id="cam1" style="width: 192px; height: 108px;"></video>
+
+<div class="container">
+
+<div id="draggable" class="one" style="background-color: aqua;">
+  <video id="cam1" style="width: 66vw; height: 60vh; object-fit: cover;"></video>
 </div>
 
-<div id="draggable2" class="draggable ui-widget-content" style="background-color: blueviolet;">
-  <video id="cam2" style="width: 192px; height: 108px;"></video>
+<div id="draggable2" class="two" style="background-color: blueviolet;">
+  <video id="cam2" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
 </div>
 
-<div id="draggable3" class="draggable ui-widget-content" style="background-color: coral;">
-  <video id="cam3" style="width: 192px; height: 108px;"></video>
+<div id="draggable3" class="three" style="background-color: coral;">
+  <video id="cam3" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
 </div>
 
-<div id="draggable4" class="draggable ui-widget-content" style="background-color: cornflowerblue;">
-  <video id="cam4" style="width: 192px; height: 108px;"></video>
+<div id="draggable4" class="four" style="background-color: cornflowerblue;">
+  <video id="cam4" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
 </div>
 
-<div id="draggable5" class="draggable ui-widget-content" style="background-color: cornsilk;">
-  <video id="cam5" style="width: 192px; height: 108px;"></video>
+<div id="draggable5" class="five" style="background-color: cornsilk;">
+  <video id="cam5" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
 </div>
 
-<div id="draggable6" class="draggable ui-widget-content" style="background-color: crimson;">
-  <video id="cam6" style="width: 192px; height: 108px;"></video>
+<div id="draggable6" class="six" style="background-color: crimson;">
+  <video id="cam6" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
 </div>
 
-<div id="draggable7" class="draggable ui-widget-content" style="background-color: darkgreen;">
+<div class="footer" id="draggablefooter">
+  <img src="./img/footer.PNG" style="width: 99vw;">
+</div>
+
+<!-- <div id="draggable7" class="draggable ui-widget-content" style="background-color: darkgreen;">
   <video id="cam7" style="width: 192px; height: 108px;"></video>
 </div>
 
@@ -175,7 +236,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
 
 <div id="draggable9" class="draggable ui-widget-content" style="background-color: deepskyblue;">
   <video id="cam9" style="width: 192px; height: 108px;"></video>
-</div>
+</div> -->
  
 <!-- <div id="draggable4" class="draggable ui-widget-content">
   <p>I only snap to the big box</p>
@@ -192,7 +253,10 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
 <div id="draggable5" class="draggable ui-widget-content">
   <p>I snap to a 80 x 80 grid</p>
 </div> -->
+
+</div>
  
+<!-- <script src="./hydra.js"></script> -->
  
 </body>
 </html>
