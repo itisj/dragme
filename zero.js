@@ -1,7 +1,7 @@
 let hydra, hydraCanvas;
 hydraCanvas = document.createElement("canvas");
-hydraCanvas.width = innerWidth/2;
-hydraCanvas.height = innerHeight/2;
+hydraCanvas.width = innerWidth;
+hydraCanvas.height = innerHeight;
 hydraCanvas.id = "hydraCanvas";
 
 hydra = new Hydra({
@@ -18,10 +18,10 @@ for(const cb of codeblocks) {
   const cd = cb.querySelector("div");
   cd.style.width = "100vw";
   cd.style.height = "100vh";
-  cd.style.left = "50px";
-  cd.style.top = "2500px";
+  cd.style.left = "0";
+  cd.style.top = "0";
   cd.style.position = "absolute";
-  cd.style.transform = "translate(0%, 0%)";
+//   cd.style.transform = "translate(0%, 0%)";
 
   var observer = new IntersectionObserver(function (entries) {
     if (entries[0].isIntersecting === true) {
