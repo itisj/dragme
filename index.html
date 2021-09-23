@@ -7,7 +7,7 @@
   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <style>
-  body { background-color: black;}
+  body { background-color: black; overflow: hidden;}
   .draggable { padding: 0px; margin: 0; mix-blend-mode: difference; }
   .ui-widget-header p, .ui-widget-content p { margin: 0; }
   #snaptarget { height: 50vh; }
@@ -222,7 +222,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
 </div>
 
 <div class="footer" id="draggablefooter">
-  <img src="./img/footer.PNG" style="width: 99vw;">
+  <img src="./img/footer.PNG" style="width: 99vw; cursor: grab; mix-blend-mode: difference;">
 </div>
 
 <!-- <div id="draggable7" class="draggable ui-widget-content" style="background-color: darkgreen;">
@@ -253,7 +253,13 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
   <p>I snap to a 80 x 80 grid</p>
 </div> -->
 
+<div style="top: 2000px; left: 20px; position: absolute;">
+  <img src="./img/who.gif">
 </div>
+
+</div>
+
+
  
 <!-- <script src="./hydra.js"></script> -->
  
