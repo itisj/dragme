@@ -7,7 +7,7 @@
   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <style>
-  html {background: rgb(0,233,255);
+  html {background: rgb(0,233,255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 background: radial-gradient(circle, rgba(0,233,255,1) 2%, rgba(0,78,255,1) 17%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 100%); }
   body { overflow: hidden;}
   .draggable { padding: 0px; margin: 0; mix-blend-mode: difference; }
@@ -16,6 +16,38 @@ background: radial-gradient(circle, rgba(0,233,255,1) 2%, rgba(0,78,255,1) 17%, 
 
 video {
   cursor: grab;
+}
+
+.chat, #yourComment {
+  position: absolute;
+  animation-name: move;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  background-color: transparent;
+  margin: 0; padding: 0;
+  font-size: 20px; 
+  color: white; 
+  z-index: 10;
+}
+.chatloop {
+  position: absolute;
+  animation-name: move;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-color: transparent;
+  margin: 0; padding: 0;
+  font-size: 20px; 
+  color: white; 
+  z-index: 10;
+}
+.chat:hover, #yourComment:hover, .chatloop:hover {
+  animation-play-state: paused;
+}
+@keyframes move {
+    0% {left: 110vw;}
+    100% {left: -60vw;}
 }
 
   /* grid */
@@ -45,157 +77,172 @@ video {
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://unpkg.com/hydra-synth"></script>
-  <script>
-  $( function() {
-    $( "#draggable" ).draggable({ snap: true });
-    $( "#draggable2" ).draggable({ snap: true });
-    $( "#draggable3" ).draggable({ snap: true });
-    $( "#draggable4" ).draggable({ snap: true });
-    $( "#draggable5" ).draggable({ snap: true });
-    $( "#draggable6" ).draggable({ snap: true });
-    $( "#draggable7" ).draggable({ snap: true });
-    $( "#draggable8" ).draggable({ snap: true });
-    $( "#draggable9" ).draggable({ snap: true });
-    $( "#draggablefooter" ).draggable({ snap: true });
-    // $( "#draggable4" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
-    // $( "#draggable3" ).draggable({ snap: ".ui-widget-header", snapMode: "outer" });
-    // $( "#draggable4" ).draggable({ grid: [ 20, 20 ] });
-    // $( "#draggable5" ).draggable({ grid: [ 80, 80 ] });
-  } );
-
-
-  //webcam
-
-  window.onload = function() {
-
-//add constraints object
-var constraints = { audio: false,
-                    video: true};
-
-//call getUserMedia, then the magic
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
-    var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream2){
-    var video = document.querySelector('#cam2');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream2;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream3){
-    var video = document.querySelector('#cam3');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream3;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream4){
-    var video = document.querySelector('#cam4');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream4;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream5){
-    var video = document.querySelector('#cam5');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream5;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream6){
-    var video = document.querySelector('#cam6');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream6;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream7){
-    var video = document.querySelector('#cam7');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream7;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream8){
-    var video = document.querySelector('#cam8');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream8;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
-    var video = document.querySelector('#cam9');
-    // var video = document.querySelector('#cam1');
-    // var video = document.querySelector('#cam1');
-    video.srcObject = mediaStream9;
-    video.play();
-}).catch(function(err){
-    console.log("yikes, and err!" + err.message);
-});
-
-}
-  </script>
 </head>
 <body>
 
+  <!-- <div id="error" >
+    <audio preload="auto" >
+      <source src="./sound/win10.mp3" type="audio/mp3">
+      <source src="./sound/winxp.mp3" type="audio/mp3">
+    </audio>
+  </div> -->
 
-  <div style="background-color: white; width: 200px; height: 200px; position: absolute; top: 2700px; left: 4800px; 
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; padding: 20px;">
+  <!-- live comments -->
+  <!-- yours -->
+  <div id="yourComment" style="top: 1vh; left: -120vw; animation-delay: 16s; 
+  animation-iteration-count: 2; animation-play-state: paused; font-size: 24px;">
+    <p><pre id="yourChat">text text text</pre></p>
+  </div>
+  <!-- others -->
+  <div class="chat" style="top: 5vh; left: -200vh; animation-delay: 1s;">
+    <p><pre id="comment1">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 8vh; left: -200vh; animation-delay: 1.7s;">
+    <p><pre id="comment2">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 12vh; left: -200vh; animation-delay: 3s;">
+    <p><pre id="comment3">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 14vh; left: -200vh; animation-delay: 2s;">
+    <p><pre id="comment4">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 16vh; left: -200vh; animation-delay: 0;">
+    <p><pre id="comment5">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 18vh; left: -200vh; animation-delay: 5s;">
+    <p><pre id="comment6">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 27vh; left: -200vh; animation-delay: 2.3s;">
+    <p><pre id="comment7">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 33vh; left: -200vh; animation-delay: 3.2s;">
+    <p><pre id="comment8">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 4vh; left: -200vh; animation-delay: 7.6s;">
+    <p><pre id="comment9">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 6vh; left: -200vh; animation-delay: 8.3s;">
+    <p><pre id="comment10">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 12vh; left: -200vh; animation-delay: 8.9s;">
+    <p><pre id="comment11">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 17vh; left: -200vh; animation-delay: 7s;">
+    <p><pre id="comment12">some text some text some text some text some text some text</pre></p>
+  </div>  
+  <div class="chat" style="top: 24vh; left: -200vh; animation-delay: 7.2s;">
+    <p><pre id="comment13">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 40vh; left: -200vh; animation-delay: 9.3s;">
+    <p><pre id="comment14">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 55vh; left: -200vh; animation-delay: 8.8s;">
+    <p><pre id="comment15">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 38vh; left: -200vh; animation-delay: 5.8s;">
+    <p><pre id="comment16">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 20vh; left: -200vh; animation-delay: 12.2s;">
+    <p><pre id="comment17">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 27vh; left: -200vh; animation-delay: 13.7s;">
+    <p><pre id="comment18">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 36vh; left: -200vh; animation-delay: 12s;">
+    <p><pre id="comment19">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 5vh; left: -200vh; animation-delay: 13.9s;">
+    <p><pre id="comment20">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 13vh; left: -200vh; animation-delay: 14.7s;">
+    <p><pre id="comment21">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 20vh; left: -200vh; animation-delay: 11.5s;">
+    <p><pre id="comment22">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 24vh; left: -200vh; animation-delay: 35.2s;">
+    <p><pre id="comment23">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 43vh; left: -200vh; animation-delay: 14.6s;">
+    <p><pre id="comment24">some text some text some text some text some text some text</pre></p>
+  </div>
+  <!--just loop -->
+  <div class="chatloop" style="top: 4vh; left: -200vh; animation-delay: 20.8s;">
+    <p><pre id="comment25">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 7vh; left: -200vh; animation-delay: 19.4s;">
+    <p><pre id="comment26">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 11vh; left: -200vh; animation-delay: 21.7s;">
+    <p><pre id="comment27">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 17vh; left: -200vh; animation-delay: 22.6s;">
+    <p><pre id="comment28">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 25vh; left: -200vh; animation-delay: 18.7s;">
+    <p><pre id="comment29">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 29vh; left: -200vh; animation-delay: 23.2s;">
+    <p><pre id="comment30">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 34vh; left: -200vh; animation-delay: 24.9s;">
+    <p><pre id="comment31">some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chatloop" style="top: 41vh; left: -200vh; animation-delay: 19.7s;">
+    <p><pre id="comment32">some text some text some text some text some text some text</pre></p>
+  </div>
+  <!-- <div class="chat" style="top: 50vh;">
+    <p class="comment"><pre>some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 52vh;">
+    <p class="comment"><pre>some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 57vh;">
+    <p class="comment"><pre>some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 60vh;">
+    <p class="comment"><pre>some text some text some text some text some text some text</pre></p>
+  </div>
+  <div class="chat" style="top: 63vh;">
+    <p class="comment"><pre>some text some text some text some text some text some text</pre></p>
+  </div> -->
+
+  
+
+
+  <!-- buttons -->
+  <button type="button" class="error"
+  style="border-style: none; background-color: transparent; width: 6vw; height: 6vh; 
+  position: absolute; left: 93vw; top: 92vh; z-index: 6; cursor: pointer;"  
+  onclick="showCanvas();">
+  <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+</button>
+  <button type="button" 
+  style="border-style: none; background-color: transparent; width: 6vw; height: 6vh; 
+  position: absolute; left: 46vw; top: 92vh; z-index: 6; cursor: pointer;"
+  onclick="promptNewInnerHtml();"></button>
+
+
+  <div style="background-color: white; width: 200px; height: 200px; 
+  position: absolute; top: 2700px; left: 4800px; font-size: 20px; padding: 20px;">
     <a href="./zero.html">Let's back to the begining, shall we?</a>
   </div>
 
-  <!-- <div class="codeblock">
-    <code style="display: none;">noise(2, 0.6).blend(osc(6,-0.2,() => mouse.x*0.001)).rotate(0, 0.5)
-      .modulate(osc(5).rotate(0, -0.2), 0.5)
-      .out(o0)
-      
-      src(o0).blend(o0).scale(() => 0.3 + mouse.x*0.0005,1,1)
-      .modulate(o0, 0.5)
-      .out(o1)
-      
-      src(o1).blend(o1).rotate(0, 0.5)
-      .modulate(o1, 0.5)
-      .out(o2)
-      
-      src(o2).blend(o2).rotate(0, 0.5)
-      .modulate(o2, 0.5)
-      .out(o3)
-      
-      render(o3)</code>
-    <div class="placeholder">
-      <canvas id="hydraCanvas"></canvas>
+  <div class="codeblock">
+    <code style="display: none;">
+      shape(() => Math.sin(time) + 1 * 3, 0.277, 0.013)
+      .repeat(5, 3, () => a.fft[0] * 2, () => a.fft[1] * 0.168).scrollY(.5, 0.1)
+      .scrollX(.5, 0.1).layer(src(o1).mask(o0).luma(.01, .1).invert(.2))
+      .modulate(o1, .02).out(o0);
+      osc(60, 0.09, 0.9).color(.9, 0.01, 5)
+      .modulate(osc(10).rotate(1, 0.5))
+      .rotate(1, 0.2).out(o1);
+      render(o0);
+    </code>
+    <div class="placeholder" >
+      <canvas id="hydraCanvas" style="position: absolute;"></canvas>
     </div>
-  </div> -->
+  </div>
  
 <!-- <div id="snaptarget" class="ui-widget-header">
   <p>I&apos;m a snap target</p>
@@ -206,31 +253,52 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
 <div class="container">
 
 <div id="draggable" class="one" style="background-color: aqua;">
-  <video id="cam1" style="width: 66vw; height: 60vh; object-fit: cover;"></video>
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <video id="cam1" style="width: 66vw; height: 60vh; object-fit: cover;"></video>
+  </div>
 </div>
 
 <div id="draggable2" class="two" style="background-color: blueviolet;">
-  <video id="cam2" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <video id="cam2" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  </div>
 </div>
 
 <div id="draggable3" class="three" style="background-color: coral;">
-  <video id="cam3" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <video id="cam3" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  </div>
 </div>
 
 <div id="draggable4" class="four" style="background-color: cornflowerblue;">
-  <video id="cam4" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <video id="cam4" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  </div>
 </div>
 
 <div id="draggable5" class="five" style="background-color: cornsilk;">
-  <video id="cam5" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <video id="cam5" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  </div>
 </div>
 
 <div id="draggable6" class="six" style="background-color: crimson;">
-  <video id="cam6" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <video id="cam6" style="width: 33vw; height: 30vh; object-fit: cover;"></video>
+  </div>
 </div>
 
 <div class="footer" id="draggablefooter">
-  <img src="./img/footer.PNG" style="width: 99vw; cursor: grab; mix-blend-mode: difference;">
+  <div class="error" >
+    <audio preload="auto" ><source src="./sound/win10.mp3" type="audio/mp3"></audio>
+    <img src="./img/footer.PNG" style="width: 99vw; mix-blend-mode: difference;">
+  </div>
 </div>
 
 <!-- <div id="draggable7" class="draggable ui-widget-content" style="background-color: darkgreen;">
@@ -267,9 +335,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream9){
 
 </div>
 
-
- 
-<script src="./hydra.js"></script>
+<script src="./zero.js"></script>
  
 </body>
 </html>
